@@ -68,7 +68,13 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler deploy
+        run: |
+          set -o pipefail
+          if ! npx wrangler deploy 2>&1 | tee deploy.log; then
+            msg=$(grep -iE "error|code: *[0-9]+|authentication|permission|not found|forbidden|zone" deploy.log | grep -v "^\s*at " | head -6 | tr '\n' ' ')
+            echo "::error title=Cloudflare deploy failed::${msg:-see the step log}"
+            exit 1
+          fi
 
       - name: Commit stored readings
         if: steps.diff.outputs.changed == 'true'
