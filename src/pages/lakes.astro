@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { STATES, LAKES, ft, sgn, cls, lakeUrl } from '../lib/lakes';
+---
+<Base title={`All ${LAKES.length} Lakes: Current Water Levels by State | LakeLevelData`} description="Every lake and reservoir on LakeLevelData, grouped by state, with today's elevation and 7-day change.">
+  <p class="crumbs"><a href="/">Lake levels</a> › All lakes</p>
+  <h1>All lakes</h1>
+  {STATES.map((s) => <>
+    <h2><a href={`/${s.slug}/`}>{s.name}</a></h2>
+    <ul class="grid">{[...s.lakes].sort((a, b) => a.name.localeCompare(b.name)).map((l) => <li><a href={lakeUrl(l)}>{l.name}</a><br /><span class="muted">{ft(l.now, 1)} ft · <span class={cls(l.ch7)}>{sgn(l.ch7, 1)}</span> 7d</span></li>)}</ul>
+  </>)}
+</Base>

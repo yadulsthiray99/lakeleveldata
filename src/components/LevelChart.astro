@@ -1,0 +1,39 @@
+---
+// 12-month elevation chart as inline SVG (no script). Full pool / guide curve drawn when they fit the scale.
+import { ft, dNoYear, type Lake } from '../lib/lakes';
+interface Props { lake: Lake }
+const { lake } = Astro.props;
+const W = 680, H = 250, L = 58, R = 12, T = 14, B = 30;
+const pts = lake.chart as [string, number][];
+const guide = lake.chart_guide as [string, number][];
+const vals = [...pts.map((p) => p[1]), ...guide.map((g) => g[1])];
+let lo = Math.min(...vals), hi = Math.max(...vals);
+const span0 = Math.max(hi - lo, 1);
+const showFull = lake.full != null && lake.full - hi <= Math.max(span0 * 2, 5) && lo - lake.full <= Math.max(span0 * 2, 5);
+if (showFull) { lo = Math.min(lo, lake.full!); hi = Math.max(hi, lake.full!); }
+const pad = Math.max((hi - lo) * 0.08, 0.2); lo -= pad; hi += pad;
+const t0 = Date.parse(pts[0][0]), t1 = Date.parse(pts[pts.length - 1][0]);
+const x = (d: string) => L + ((Date.parse(d) - t0) / Math.max(t1 - t0, 1)) * (W - L - R);
+const y = (v: number) => T + ((hi - v) / (hi - lo)) * (H - T - B);
+const line = (s: [string, number][]) => s.map((p, i) => `${i ? 'L' : 'M'}${x(p[0]).toFixed(1)} ${y(p[1]).toFixed(1)}`).join('');
+const step = (hi - lo) / 4;
+const ticks = [0, 1, 2, 3, 4].map((i) => lo + step * i);
+const dec = hi - lo < 4 ? 1 : 0;
+const months: string[] = [];
+for (const [d] of pts) if (d.endsWith('-01') || d === pts[0][0]) months.push(d);
+const labels = months.filter((_, i) => i % 2 === 0);
+const area = `${line(pts)}L${x(pts[pts.length - 1][0]).toFixed(1)} ${H - B}L${L} ${H - B}Z`;
+const lastP = pts[pts.length - 1];
+---
+<figure class="chart">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${lake.name} elevation from ${dNoYear(pts[0][0])} to ${dNoYear(lastP[0])}: low ${ft(lake.lo12.value)} ft, high ${ft(lake.hi12.value)} ft, now ${ft(lake.now)} ft`}>
+    {ticks.map((t) => <g><line x1={L} x2={W - R} y1={y(t)} y2={y(t)} stroke="#e3e9ef" /><text x={L - 6} y={y(t) + 4} text-anchor="end" font-size="11" fill="#566573">{ft(t, dec)}</text></g>)}
+    {labels.map((d) => <text x={x(d)} y={H - 10} font-size="11" fill="#566573">{dNoYear(d).split(' ')[0]} {d.slice(2, 4)}</text>)}
+    <path d={area} fill="#38bdf8" opacity=".18" />
+    {showFull && <g><line x1={L} x2={W - R} y1={y(lake.full!)} y2={y(lake.full!)} stroke="#0b3954" stroke-dasharray="6 4" /><text x={W - R - 4} y={y(lake.full!) - 5} text-anchor="end" font-size="11" font-weight="700" fill="#0b3954">full pool {ft(lake.full, 1)}</text></g>}
+    {guide.length > 1 && <path d={line(guide)} fill="none" stroke="#b45309" stroke-width="1.6" stroke-dasharray="4 3" />}
+    <path d={line(pts)} fill="none" stroke="#0369a1" stroke-width="2.2" stroke-linejoin="round" />
+    <circle cx={x(lastP[0])} cy={y(lastP[1])} r="4" fill="#0369a1" />
+  </svg>
+  <figcaption>Daily elevation in feet, last 12 months{guide.length > 1 ? '; dashed orange line = Corps guide curve (target level)' : ''}{lake.full != null && !showFull ? `; full pool (${ft(lake.full, 1)} ft) is ${ft(lake.full - lake.hi12.value, 1)} ft above the highest point shown` : ''}.</figcaption>
+</figure>

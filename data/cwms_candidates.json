@@ -1,0 +1,333 @@
+{
+ "Lanier": {
+  "office": "SAM",
+  "cand": [
+   "Buford.Elev.Inst.15Minutes.0.Raw-USGS",
+   "Buford.Elev.Inst.1Hour.0.Raw-USGS",
+   "Buford.Elev.Inst.~1Day.0.Raw-USGS"
+  ],
+  "guide": [
+   "Buford.Elev-Guide Curve.Inst.15Minutes.0.Rev-PROJECT",
+   "Buford.Elev-Guide Curve.Inst.1Hour.0.Rev-PROJECT"
+  ]
+ },
+ "Allatoona": {
+  "office": "SAM",
+  "cand": [
+   "Allatoona.Elev.Inst.1Hour.0.Raw-USGS",
+   "Allatoona.Elev.Inst.~1Day.0.Historical"
+  ],
+  "guide": [
+   "Allatoona.Elev-Guide Curve.Inst.1Day.0.Rev-PROJECT"
+  ]
+ },
+ "Hartwell": {
+  "office": "SAS",
+  "cand": [
+   "Hartwell.Elev-Head.Inst.1Hour.0.Raw-SHEF_SAS",
+   "Hartwell.Elev-Level1.Inst.~1Day.0.ARCHIVE-DAILY",
+   "Hartwell.Elev-Level2.Inst.~1Day.0.ARCHIVE-DAILY",
+   "Hartwell.Elev-Level3.Inst.~1Day.0.ARCHIVE-DAILY",
+   "Hartwell.Elev-Pool.Inst.1Hour.0.HISTORIAN_SAS",
+   "Hartwell.Elev-Pool.Inst.1Hour.0.Raw-SHEF_SAS"
+  ],
+  "guide": [
+   "Hartwell.Elev-GC.Inst.1Day.0.ARCHIVE-DAILY",
+   "Hartwell.Elev-Guide-Curve.Inst.~1Day.0.ARCHIVE-DAILY",
+   "Hartwell.Elev-Guide_Curve.Inst.~1Day.0.ARCHIVE-DAILY"
+  ]
+ },
+ "Thurmond": {
+  "office": "SAS",
+  "cand": [
+   "Thurmond.Elev-Head.Inst.1Hour.0.HISTORIAN_SAS",
+   "Thurmond.Elev-Head.Inst.1Hour.0.Raw-SHEF_SAS",
+   "Thurmond.Elev-Pool-Rule.Inst.~1Day.0.ARCHIVE-DAILY",
+   "Thurmond.Elev-Pool.Inst.1Hour.0.HISTORIAN_SAS",
+   "Thurmond.Elev-Pool.Inst.1Hour.0.Raw-SHEF_SAS",
+   "Thurmond.Elev-Tail.Inst.1Hour.0.HISTORIAN_SAS"
+  ],
+  "guide": [
+   "Thurmond.Elev-GC.Inst.1Day.0.ARCHIVE-DAILY"
+  ]
+ },
+ "Russell": {
+  "office": "SAS",
+  "cand": [
+   "Russell.Elev-Head.Inst.1Hour.0.Raw-SHEF_SAS",
+   "Russell.Elev-Pool-Rule.Inst.~1Day.0.ARCHIVE-DAILY",
+   "Russell.Elev-Pool.Inst.1Hour.0.Raw-SHEF_SAS",
+   "Russell.Elev-Tail.Inst.1Hour.0.HISTORIAN_SAS",
+   "Russell.Elev-Tail.Inst.1Hour.0.Raw-SHEF_SAS",
+   "Russell.Elev-Tail.Inst.1Hour.0.Raw-SHEF_SAS_OTF"
+  ],
+  "guide": [
+   "Russell.Elev-GC.Inst.1Day.0.ARCHIVE-DAILY",
+   "Russell.Elev-Guide_Curve.Inst.~1Day.0.ARCHIVE-DAILY"
+  ]
+ },
+ "Table Rock": {
+  "office": "SWL",
+  "cand": [
+   "Table_Rock_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-raw",
+   "Table_Rock_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev",
+   "Table_Rock_Dam-Headwater.Elev.Inst.~1Day.0.Crest",
+   "Table_Rock_Dam-Headwater.Elev.Inst.~1Day.0.Forecast",
+   "Table_Rock_Dam-Headwater.Elev.Inst.~1Day.0.MN-Elev",
+   "Table_Rock_Dam.Elev.Inst.1Hour.0.National-CWMS-Forecast"
+  ],
+  "guide": []
+ },
+ "Beaver": {
+  "office": "SWL",
+  "cand": [
+   "Beaver_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-raw",
+   "Beaver_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev",
+   "Beaver_Dam-Headwater.Elev.Inst.~1Day.0.Crest",
+   "Beaver_Dam-Headwater.Elev.Inst.~1Day.0.Forecast",
+   "Beaver_Dam-Headwater.Elev.Inst.~1Day.0.MN-Elev",
+   "Beaver_Dam.Elev.Inst.1Hour.0.National-CWMS-Forecast"
+  ],
+  "guide": []
+ },
+ "Bull Shoals": {
+  "office": "SWL",
+  "cand": [
+   "Bull_Shoals_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-raw",
+   "Bull_Shoals_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev",
+   "Bull_Shoals_Dam-Headwater.Elev.Inst.~1Day.0.Crest",
+   "Bull_Shoals_Dam-Headwater.Elev.Inst.~1Day.0.Forecast",
+   "Bull_Shoals_Dam-Headwater.Elev.Inst.~1Day.0.MN-Elev",
+   "Bull_Shoals_Dam.Elev.Inst.1Hour.0.National-CWMS-Forecast"
+  ],
+  "guide": []
+ },
+ "Norfork": {
+  "office": "SWL",
+  "cand": [
+   "Norfork_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-raw",
+   "Norfork_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev",
+   "Norfork_Dam-Headwater.Elev.Inst.~1Day.0.Crest",
+   "Norfork_Dam-Headwater.Elev.Inst.~1Day.0.Forecast",
+   "Norfork_Dam-Headwater.Elev.Inst.~1Day.0.MN-Elev",
+   "Norfork_Dam.Elev.Inst.1Hour.0.National-CWMS-Forecast"
+  ],
+  "guide": []
+ },
+ "Greers Ferry": {
+  "office": "SWL",
+  "cand": [
+   "GreersFerry_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-raw",
+   "GreersFerry_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev",
+   "GreersFerry_Dam-Headwater.Elev.Inst.~1Day.0.Crest",
+   "GreersFerry_Dam-Headwater.Elev.Inst.~1Day.0.Forecast",
+   "GreersFerry_Dam-Headwater.Elev.Inst.~1Day.0.MN-Elev",
+   "GreersFerry_Dam.Elev.Inst.1Hour.0.National-CWMS-Forecast"
+  ],
+  "guide": []
+ },
+ "Kerr": {
+  "office": "SAW",
+  "cand": [],
+  "guide": []
+ },
+ "Falls": {
+  "office": "SAW",
+  "cand": [],
+  "guide": []
+ },
+ "Jordan": {
+  "office": "SAW",
+  "cand": [],
+  "guide": []
+ },
+ "Truman": {
+  "office": "NWK",
+  "cand": [],
+  "guide": []
+ },
+ "Stockton": {
+  "office": "NWK",
+  "cand": [],
+  "guide": []
+ },
+ "Perry": {
+  "office": "NWK",
+  "cand": [],
+  "guide": []
+ },
+ "Milford": {
+  "office": "NWK",
+  "cand": [],
+  "guide": []
+ },
+ "Keystone": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Eufaula": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Oologah": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Tenkiller": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Kaw": {
+  "office": "SWT",
+  "cand": [
+   "KAWL.Elev.Inst.1Hour.0.Ccp-Rev",
+   "KAWL.Elev.Inst.~1Hour.0.Rev-Regi-Interlaced"
+  ],
+  "guide": []
+ },
+ "Grand": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Texoma": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Fort Gibson": {
+  "office": "SWT",
+  "cand": [],
+  "guide": []
+ },
+ "Nolin": {
+  "office": "LRL",
+  "cand": [
+   "Nolin-Lake.Elev.Inst.15Minutes.0.Decodes-raw",
+   "Nolin-Lake.Elev.Inst.15Minutes.0.LRGS-raw",
+   "Nolin-Lake.Elev.Inst.15Minutes.0.LRGS-rev",
+   "Nolin-Lake.Elev.Inst.15Minutes.0.USGS-raw",
+   "Nolin-Lake.Elev.Inst.15Minutes.0.USGS-rev",
+   "Nolin.Elev.Inst.15Minutes.0.LRGS-raw"
+  ],
+  "guide": []
+ },
+ "Rough River": {
+  "office": "LRL",
+  "cand": [
+   "Rough-Lake.Elev.Inst.15Minutes.0.Decodes-raw",
+   "Rough-Lake.Elev.Inst.15Minutes.0.LRGS-raw",
+   "Rough-Lake.Elev.Inst.15Minutes.0.LRGS-rev",
+   "Rough-Lake.Elev.Inst.15Minutes.0.USGS-raw",
+   "Rough-Lake.Elev.Inst.15Minutes.0.USGS-rev",
+   "Rough.Elev.Inst.15Minutes.0.LRGS-raw"
+  ],
+  "guide": []
+ },
+ "Barren River": {
+  "office": "LRL",
+  "cand": [
+   "Barren-Lake.Elev.Inst.15Minutes.0.LRGS-raw",
+   "Barren-Lake.Elev.Inst.15Minutes.0.LRGS-rev",
+   "Barren-Lake.Elev.Inst.15Minutes.0.USGS-raw",
+   "Barren-Lake.Elev.Inst.15Minutes.0.USGS-rev",
+   "Barren.Elev.Inst.1Hour.0.LRGS-rev",
+   "Barren.Elev.Inst.1Hour.0.LRL-cavi-fct"
+  ],
+  "guide": []
+ },
+ "Taylorsville": {
+  "office": "LRL",
+  "cand": [
+   "Taylorsville-Lake.Elev.Inst.15Minutes.0.Decodes-raw",
+   "Taylorsville-Lake.Elev.Inst.15Minutes.0.LRGS-raw",
+   "Taylorsville-Lake.Elev.Inst.15Minutes.0.LRGS-rev",
+   "Taylorsville.Elev.Inst.15Minutes.0.LRGS-raw",
+   "Taylorsville.Elev.Inst.15Minutes.0.LRGS-rev",
+   "Taylorsville.Elev.Inst.1Hour.0.LRGS-rev"
+  ],
+  "guide": []
+ },
+ "Cumberland": {
+  "office": "LRN",
+  "cand": [
+   "Wolf Creek Dam.Elev.Inst.1Hour.0.celrn-cwms-forecast",
+   "Wolf Creek Dam.Elev.Inst.~1Day.0.celrn-cwms-forecast"
+  ],
+  "guide": []
+ },
+ "Dale Hollow": {
+  "office": "LRN",
+  "cand": [
+   "Dale Hollow Dam.Elev.Inst.1Hour.0.celrn-cwms-forecast",
+   "Dale Hollow Dam.Elev.Inst.~1Day.0.celrn-cwms-forecast"
+  ],
+  "guide": []
+ },
+ "Center Hill": {
+  "office": "LRN",
+  "cand": [
+   "Center Hill Dam.Elev.Inst.1Hour.0.celrn-cwms-forecast",
+   "Center Hill Dam.Elev.Inst.~1Day.0.celrn-cwms-forecast"
+  ],
+  "guide": []
+ },
+ "Percy Priest": {
+  "office": "LRN",
+  "cand": [],
+  "guide": []
+ },
+ "Okeechobee": {
+  "office": "SAJ",
+  "cand": [
+   "Okeechobee.Elev-Zone.Inst.~1Day.0.ZoneA_NGVD",
+   "Okeechobee.Elev-Zone.Inst.~1Day.0.ZoneBC_NGVD",
+   "Okeechobee.Elev-Zone.Inst.~1Day.0.ZoneD1_NGVD",
+   "Okeechobee.Elev-Zone.Inst.~1Day.0.ZoneD2_NGVD",
+   "Okeechobee.Elev-Zone.Inst.~1Day.0.ZoneD_NGVD",
+   "Okeechobee.Elev.Inst.~1Day.0.Computed_Bridge_Clearance"
+  ],
+  "guide": []
+ },
+ "Sardis": {
+  "office": "MVK",
+  "cand": [
+   "Sardis Lake.Elev.Inst.1Hour.0.DCP-rev",
+   "Sardis Lake.Elev.Inst.1Hour.0.National-CWMS-Forecast"
+  ],
+  "guide": [
+   "Sardis Lake.Elev.Inst.1Hour.0.Guide Curve"
+  ]
+ },
+ "Grenada": {
+  "office": "MVK",
+  "cand": [
+   "Grenada Lake.Elev.Inst.1Hour.0.DCP-rev",
+   "Grenada Lake.Elev.Inst.1Hour.0.National-CWMS-Forecast",
+   "Grenada.Elev.Inst.15Minutes.0.DCP-rev"
+  ],
+  "guide": [
+   "Grenada Lake.Elev.Inst.1Hour.0.Guide Curve"
+  ]
+ },
+ "Lake Lewis Smith": {
+  "office": "SAM",
+  "cand": [
+   "Smith.Elev.Inst.1Hour.0.GC-APCO",
+   "Smith.Elev.Inst.1Hour.0.Raw-APCO"
+  ],
+  "guide": []
+ },
+ "Weiss": {
+  "office": "SAM",
+  "cand": [
+   "Weiss.Elev.Inst.1Hour.0.GC-APCO",
+   "Weiss.Elev.Inst.1Hour.0.Raw-APCO"
+  ],
+  "guide": []
+ }
+}

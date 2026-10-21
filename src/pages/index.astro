@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { hero } from '../brand.mjs';
+import { LAKES, STATES, BUILT, ft, sgn, cls, lakeUrl } from '../lib/lakes';
+const top = LAKES.slice(0, 30);
+const mead = LAKES.find((l) => l.slug === 'lake-mead');
+const rising = LAKES.filter((l) => l.trend === 'rising').length, falling = LAKES.filter((l) => l.trend === 'falling').length;
+const schema = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'LakeLevelData', url: 'https://lakeleveldata.com/' }];
+---
+<Base title="Lake Levels Today: Current Water Levels for 100 U.S. Lakes | LakeLevelData"
+      description={`Current water levels for ${LAKES.length} U.S. lakes and reservoirs from official USACE, Bureau of Reclamation, USGS, TWDB and California gauges, with 7-day changes, percent full and 12-month charts.`} schema={schema}>
+  <div class="hero">
+    <div>
+      <h1>Lake levels today</h1>
+      <p class="answer">Current water levels for {LAKES.length} lakes and reservoirs, straight from the agencies that run the gauges. Of these lakes, <strong>{rising} are rising</strong> and <strong>{falling} are falling</strong> over the past week. Pick a lake for its 12-month chart, daily readings and how it compares with last year.</p>
+    </div>
+    {mead && <Fragment set:html={hero({ name: mead.name, now: mead.now, full: mead.full ?? 1229, dead: 895 })} />}
+  </div>
+
+  <h2>Most checked lakes</h2>
+  <div class="scroll"><table>
+    <tr><th>Lake</th><th>State</th><th class="num">Level (ft)</th><th class="num">7 days</th><th class="num">Full</th></tr>
+    {top.map((l) => <tr><td><a href={lakeUrl(l)}>{l.name}</a></td><td>{l.state}</td><td class="num">{ft(l.now)}</td><td class={`num ${cls(l.ch7)}`}>{sgn(l.ch7)}</td><td class="num">{l.pf != null ? `${ft(l.pf, 1)}%` : l.vs_full != null ? sgn(l.vs_full, 1) : l.vs_guide != null ? `${sgn(l.vs_guide, 1)} vs guide` : '–'}</td></tr>)}
+  </table></div>
+  <p><a href="/lakes/">All {LAKES.length} lakes →</a></p>
+
+  <h2>Lake levels by state</h2>
+  <ul class="grid">{STATES.map((s) => <li><a href={`/${s.slug}/`}>{s.name} lake levels</a><br /><span class="muted">{s.lakes.length} {s.lakes.length === 1 ? 'lake' : 'lakes'}</span></li>)}</ul>
+  <p class="muted">"Full" shows percent full where the agency publishes storage (Texas), otherwise feet above or below full pool or the Corps guide curve. Updated {BUILT}.</p>
+</Base>

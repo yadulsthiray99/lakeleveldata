@@ -1,0 +1,89 @@
+---
+import { mark } from '../brand.mjs';
+interface Props { title: string; description: string; schema?: object[]; image?: string }
+const { title, description, schema = [], image } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image ?? '/og.png', Astro.site).href;
+const isHome = Astro.url.pathname === '/';
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'LakeLevelData', url: new URL('/', Astro.site).href, logo: new URL('/logo.png', Astro.site).href };
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LakeLevelData" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content="#0b3954" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {isHome && <script type="application/ld+json" set:html={JSON.stringify(org)} />}
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    <style is:global>
+      :root { --ink:#13212e; --muted:#566573; --line:#dbe3ea; --bg:#ffffff; --soft:#f1f6fa; --accent:#0369a1; --brand-bg:#0b3954; --brand-hi:#38bdf8; --up:#047857; --down:#b42318; }
+      * { box-sizing: border-box; }
+      body { margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+      a { color:var(--accent); }
+      .wrap { max-width:980px; margin:0 auto; padding:0 16px; }
+      h1 { font-size:clamp(26px,4vw,36px); line-height:1.2; margin:26px 0 8px; }
+      h2 { font-size:22px; margin:36px 0 10px; }
+      h3 { font-size:18px; margin:22px 0 6px; }
+      .answer { font-size:18px; background:var(--soft); border-left:4px solid var(--accent); padding:14px 16px; border-radius:6px; }
+      table { width:100%; border-collapse:collapse; font-size:15px; }
+      th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+      th { background:var(--soft); font-weight:600; white-space:nowrap; }
+      td.num, th.num { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+      .up { color:var(--up); } .down { color:var(--down); }
+      .muted { color:var(--muted); font-size:14px; }
+      .crumbs { font-size:14px; color:var(--muted); margin-top:16px; }
+      .crumbs a { color:var(--muted); }
+      .scroll { overflow-x:auto; }
+      .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:8px; padding:0; list-style:none; }
+      .grid a { display:block; padding:8px 10px; border:1px solid var(--line); border-radius:6px; text-decoration:none; }
+      .grid a:hover { border-color:var(--accent); }
+      .stats { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin:16px 0; }
+      .stat { border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+      .stat b { display:block; font-size:22px; line-height:1.2; font-variant-numeric:tabular-nums; }
+      .stat span { font-size:13px; color:var(--muted); }
+      figure.chart { margin:12px 0; } figure.chart svg { width:100%; height:auto; display:block; }
+      figure.chart figcaption { font-size:13px; color:var(--muted); }
+      .note { font-size:14px; background:#fff7ed; border:1px solid #fed7aa; padding:8px 12px; border-radius:6px; }
+      header.site { background:var(--brand-bg); border-bottom:3px solid var(--brand-hi); }
+      header.site .wrap { display:flex; flex-wrap:wrap; gap:4px 16px; align-items:center; justify-content:space-between; min-height:60px; padding-top:6px; padding-bottom:6px; }
+      header.site a.brand { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-weight:800; font-size:20px; letter-spacing:-.01em; }
+      header.site a.brand svg { flex:none; }
+      header.site a.brand b { color:var(--brand-hi); font-weight:800; }
+      header.site nav a { color:#e6ebf0; margin-left:16px; font-size:15px; text-decoration:none; }
+      header.site nav a:first-child { margin-left:0; }
+      header.site nav a:hover { color:#fff; text-decoration:underline; }
+      footer.site { border-top:3px solid var(--brand-hi); margin-top:48px; font-size:14px; color:var(--muted); }
+      footer.site .brandline { display:flex; align-items:center; gap:8px; margin-top:20px; font-weight:700; color:var(--ink); }
+      .hero { display:grid; grid-template-columns:1.25fr 1fr; gap:24px; align-items:center; }
+      .hero svg { width:100%; height:auto; max-height:250px; display:block; }
+      @media (max-width:720px) { .hero { grid-template-columns:1fr; gap:0; } .hero svg { max-height:180px; margin-top:12px; } }
+    </style>
+  </head>
+  <body>
+    <header class="site"><div class="wrap">
+      <a class="brand" href="/" aria-label="LakeLevelData home"><Fragment set:html={mark(34)} /><span>LakeLevel<b>Data</b></span></a>
+      <nav><a href="/texas/">Texas</a><a href="/lakes/">All lakes</a><a href="/sources/">Sources</a></nav>
+    </div></header>
+    <main class="wrap"><slot /></main>
+    <footer class="site"><div class="wrap">
+      <p class="brandline"><Fragment set:html={mark(22)} />LakeLevelData</p>
+      <p>Lake levels are elevations in feet above sea level, copied from the agency that operates each gauge (USACE, Bureau of Reclamation, USGS, Texas Water Development Board, California DWR). Recent readings are provisional and can be revised. Not for navigation or flood safety: check the operating agency and local warnings before boating.</p>
+      <p><a href="/about/">About</a> · <a href="/sources/">Data sources</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>
+    </div></footer>
+  </body>
+</html>

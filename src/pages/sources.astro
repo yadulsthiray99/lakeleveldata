@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { LAKES } from '../lib/lakes';
+const n = (s: string) => LAKES.filter((l) => l.source === s).length;
+---
+<Base title="Data Sources: Where Our Lake Levels Come From | LakeLevelData" description="LakeLevelData copies lake elevations from USACE, the Bureau of Reclamation, USGS, the Texas Water Development Board and California DWR. Here is how each feed works.">
+  <h1>Where the lake levels come from</h1>
+  <p class="answer">Every number on this site is a reading published by the agency that operates the lake or its gauge. We do not model, estimate or forecast levels. A script checks each source every few hours, stores the daily readings, and the site is rebuilt only when a level changes.</p>
+  <h2>Sources</h2>
+  <table>
+    <tr><th>Agency</th><th>Feed</th><th class="num">Lakes</th></tr>
+    <tr><td>Texas Water Development Board</td><td>Water Data for Texas: daily elevation, storage and percent full</td><td class="num">{n('twdb')}</td></tr>
+    <tr><td>U.S. Army Corps of Engineers</td><td>CWMS Data API: hourly pool elevation and, where published, the guide curve</td><td class="num">{n('cwms')}</td></tr>
+    <tr><td>U.S. Geological Survey</td><td>Water Services: lake and reservoir elevation gauges</td><td class="num">{n('usgs')}</td></tr>
+    <tr><td>California Department of Water Resources</td><td>CDEC: daily reservoir elevation and storage</td><td class="num">{n('cdec')}</td></tr>
+    <tr><td>U.S. Bureau of Reclamation</td><td>Hydrologic Database (HDB): daily end-of-day elevation</td><td class="num">{n('hdb')}</td></tr>
+  </table>
+  <h2>What the numbers mean</h2>
+  <p><strong>Level / elevation</strong> is the water surface height in feet above sea level at the dam or gauge, in the datum the agency uses. It is not water depth.</p>
+  <p><strong>Full pool</strong> is the top of the conservation pool: the normal maximum level used for water supply and recreation. Water above it is flood storage that the operator releases when it can. In Texas, <strong>percent full</strong> is TWDB's conservation storage divided by conservation capacity.</p>
+  <p><strong>Guide curve</strong> is the seasonal target level the Corps of Engineers aims for at some lakes (usually higher in summer, lower in winter).</p>
+  <p><strong>Daily values</strong>: for each day we keep the last reading of that local day. Changes ("past 7 days", "vs 1 year ago") compare today's reading with the reading on that earlier date.</p>
+  <h2>Accuracy</h2>
+  <p>Recent readings are provisional: agencies sometimes correct them later, and a gauge can go offline. If a lake has no new reading for more than ten days, we take its page down until data returns. Do not use this site for navigation, flood or dam safety decisions; follow the operating agency and the National Weather Service.</p>
+</Base>

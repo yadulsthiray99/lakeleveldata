@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import { LAKES } from '../lib/lakes';
+---
+<Base title="About LakeLevelData" description="LakeLevelData shows current water levels for U.S. lakes and reservoirs from official agency gauges, with charts and comparisons.">
+  <h1>About LakeLevelData</h1>
+  <p>LakeLevelData answers one question quickly: how high is the lake today, and is it going up or down? It covers {LAKES.length} lakes and reservoirs that people check most often, from Lake Mead and Lake Travis to Table Rock Lake and Lake Lanier.</p>
+  <p>The levels are copied from public agency data (see <a href="/sources/">data sources</a>), updated automatically several times a day. For each lake we add the context the raw feeds leave out: change over a day, a week and a month, the 12-month range, the level on this date in earlier years, and how far it is from full pool.</p>
+  <p>We are independent and not affiliated with any of these agencies. Questions, or a lake you want added: see <a href="/contact/">contact</a>.</p>
+</Base>

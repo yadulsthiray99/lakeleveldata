@@ -1,0 +1,20 @@
+{
+  "name": "lakeleveldata",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:gated": "python scripts/build_data.py && astro build && python scripts/quality_check.py",
+    "preview": "astro preview",
+    "check:quality": "python scripts/quality_check.py",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "astro": "^5.7.0",
+    "@astrojs/sitemap": "^3.3.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.0"
+  }
+}

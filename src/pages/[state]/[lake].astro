@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import LevelChart from '../../components/LevelChart.astro';
+import { LAKES, ft, sgn, cls, dLong, dShort, when, levelAnswer, trendSentence, fullSentence, yearSentence, neighbors, lakeUrl, type Lake } from '../../lib/lakes';
+
+export function getStaticPaths() {
+  return LAKES.map((l) => ({ params: { state: l.state_slug, lake: l.slug }, props: { l } }));
+}
+const { l } = Astro.props as { l: Lake };
+const url = new URL(lakeUrl(l), Astro.site).href;
+const title = `${l.name} Water Level Today: ${ft(l.now)} ft${l.pf != null ? ` (${ft(l.pf, 0)}% Full)` : ''} | LakeLevelData`;
+const description = levelAnswer(l).slice(0, 158);
+const near = neighbors(l);
+const est = l.pf != null || l.vs_full != null || l.vs_guide != null;
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Lake levels', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: `${l.state_name} lake levels`, item: new URL(`/${l.state_slug}/`, Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: l.name, item: url } ] },
+  { '@context': 'https://schema.org', '@type': 'Dataset', name: `${l.name} water level (daily elevation)`, url,
+    description: `Daily water surface elevation of ${l.name}, ${l.state_name}, from the ${l.agency}, updated several times a day.`,
+    temporalCoverage: `${l.first_day}/${l.last_day}`, variableMeasured: 'Reservoir water surface elevation (feet above sea level)',
+    isAccessibleForFree: true, creator: { '@type': 'Organization', name: l.agency },
+    spatialCoverage: { '@type': 'Place', name: `${l.name}, ${l.state_name}` } },
+];
+const full = l.pf != null ? 'TWDB' : l.full != null ? 'full' : l.guide != null ? 'guide' : null;
+---
+<Base title={title} description={description} schema={schema}>
+  <p class="crumbs"><a href="/">Lake levels</a> › <a href={`/${l.state_slug}/`}>{l.state_name}</a> › {l.name}</p>
+  <h1>{l.name} water level today</h1>
+  <p class="answer"><strong>{ft(l.now)} ft</strong> above sea level ({when(l)}). {fullSentence(l)} {trendSentence(l)}</p>
+  {l.daily_only && <p class="muted">{l.agency} publishes one reading per day for {l.name}; today's value appears once the agency posts it, usually the next morning.</p>}
+
+  <div class="stats">
+    <div class="stat"><span>Level now</span><b>{ft(l.now)} ft</b></div>
+    {l.pf != null && <div class="stat"><span>Percent full</span><b>{ft(l.pf, 1)}%</b></div>}
+    {l.vs_full != null && <div class="stat"><span>vs full pool ({ft(l.full, 1)})</span><b class={cls(l.vs_full)}>{sgn(l.vs_full)}</b></div>}
+    {l.vs_guide != null && <div class="stat"><span>vs guide curve ({ft(l.guide, 1)})</span><b class={cls(l.vs_guide)}>{sgn(l.vs_guide)}</b></div>}
+    <div class="stat"><span>Past 24 hours</span><b class={cls(l.ch1)}>{sgn(l.ch1)}</b></div>
+    <div class="stat"><span>Past 7 days</span><b class={cls(l.ch7)}>{sgn(l.ch7)}</b></div>
+    <div class="stat"><span>Past 30 days</span><b class={cls(l.ch30)}>{sgn(l.ch30)}</b></div>
+    <div class="stat"><span>vs 1 year ago</span><b class={cls(l.ch365)}>{sgn(l.ch365)}</b></div>
+  </div>
+
+  <h2>{l.name} level over the last 12 months</h2>
+  <LevelChart lake={l} />
+  <p>12-month low: <strong>{ft(l.lo12.value)} ft</strong> ({dLong(l.lo12.date)}). High: <strong>{ft(l.hi12.value)} ft</strong> ({dLong(l.hi12.date)}). Swing: {ft(l.hi12.value - l.lo12.value)} ft.</p>
+
+  <h2>Daily {l.name} levels, last 30 days</h2>
+  <div class="scroll"><table>
+    <tr><th>Date</th><th class="num">Elevation (ft)</th><th class="num">Change</th></tr>
+    {l.recent.map((r: any) => <tr><td>{dShort(r.date)}</td><td class="num">{ft(r.value)}</td><td class={`num ${cls(r.chg)}`}>{sgn(r.chg)}</td></tr>)}
+  </table></div>
+
+  <h2>Monthly average levels</h2>
+  <div class="scroll"><table>
+    <tr><th>Month</th><th class="num">Average</th><th class="num">Low</th><th class="num">High</th></tr>
+    {l.monthly.map((m: any) => <tr><td>{m.month}{m.days < 25 ? ' *' : ''}</td><td class="num">{ft(m.avg)}</td><td class="num">{ft(m.low)}</td><td class="num">{ft(m.high)}</td></tr>)}
+  </table></div>
+  <p class="muted">* partial month or year.</p>
+
+  <h2>{l.name} year by year</h2>
+  <div class="scroll"><table>
+    <tr><th>Year</th><th class="num">Low</th><th class="num">High</th><th class="num">Average</th></tr>
+    {l.yearly.map((y: any) => <tr><td>{y.year}{y.days < 300 ? ' *' : ''}</td><td class="num">{ft(y.low)} <span class="muted">{dShort(y.low_date).slice(0, -6)}</span></td><td class="num">{ft(y.high)} <span class="muted">{dShort(y.high_date).slice(0, -6)}</span></td><td class="num">{ft(y.avg)}</td></tr>)}
+  </table></div>
+
+  {l.same.length > 0 && <>
+    <h2>{l.name} on this date in past years</h2>
+    <div class="scroll"><table>
+      <tr><th>Year</th><th class="num">Level on this date</th><th class="num">Today vs then</th></tr>
+      {l.same.map((s: any) => <tr><td>{s.year}</td><td class="num">{ft(s.value)} ft</td><td class={`num ${cls(s.diff)}`}>{sgn(s.diff)}</td></tr>)}
+    </table></div>
+  </>}
+
+  {l.record && <>
+    <h2>Highest and lowest levels on record</h2>
+    <p>TWDB records for {l.name} go back to {l.record.since}. The lowest level in that record is <strong>{ft(l.record.low)} ft</strong> ({dLong(l.record.low_date)}) and the highest is <strong>{ft(l.record.high)} ft</strong> ({dLong(l.record.high_date)}). Today the lake is {ft(l.now - l.record.low)} ft above its record low.{l.capacity ? ` At full conservation pool it holds ${Math.round(l.capacity).toLocaleString('en-US')} acre-feet${l.area ? ` and covers about ${Math.round(l.area).toLocaleString('en-US')} acres` : ''}.` : ''}</p>
+  </>}
+
+  <h2>Is {l.name} full?</h2>
+  <p>{full === 'TWDB' && `${l.name} is ${ft(l.pf, 1)}% full by conservation storage, measured against its top of conservation pool at ${ft(l.full)} ft. ${l.vs_full! < 0 ? `It would need to rise ${ft(-l.vs_full!)} ft to be full.` : 'It is at or above that level.'}`}
+  {full === 'full' && `${l.full_src} for ${l.name} is ${ft(l.full)} ft. ${l.vs_full! < 0 ? `The lake is ${ft(-l.vs_full!)} ft short of that today.` : `The lake is ${ft(l.vs_full!)} ft above it today.`}`}
+  {full === 'guide' && `The Corps of Engineers manages ${l.name} to a seasonal guide curve rather than one fixed full level. Today's target is ${ft(l.guide)} ft and the lake is ${ft(Math.abs(l.vs_guide!))} ft ${l.vs_guide! < 0 ? 'below' : 'above'} it.`}
+  {full === null && `${l.agency} does not publish a full-pool figure in this data feed, so compare today's ${ft(l.now)} ft with the 12-month range above (${ft(l.lo12.value)} to ${ft(l.hi12.value)} ft) and with past years.`}</p>
+
+  <h2>Is {l.name} rising or falling?</h2>
+  <p>{trendSentence(l) || 'Not enough recent readings to say.'} {l.ch1 != null && `In the latest day it moved ${sgn(l.ch1)}.`}</p>
+
+  <h2>How does {l.name} compare with last year?</h2>
+  <p>{yearSentence(l) || 'There is no reading for this date last year in the data.'} {l.same.length > 1 && `Two years ago on this date it stood at ${ft(l.same[1].value)} ft.`}</p>
+
+  <h2>Data source</h2>
+  <p>{l.agency} ({l.feed}), gauge <code>{l.gauge}</code>; readings since {dShort(l.first_day)}. <a href={l.url} rel="nofollow">Official source</a> · <a href="/sources/">how we collect it</a>.</p>
+
+  {near.length > 0 && <>
+    <h2>Other lakes in {l.state_name}</h2>
+    <ul class="grid">{near.map((n) => <li><a href={lakeUrl(n)}>{n.name}</a><br /><span class="muted">{ft(n.now, 1)} ft{n.pf != null ? ` · ${ft(n.pf, 0)}% full` : ''} · <span class={cls(n.ch7)}>{sgn(n.ch7, 1)}</span> 7d</span></li>)}</ul>
+    <p><a href={`/${l.state_slug}/`}>All {l.state_name} lake levels</a></p>
+  </>}
+</Base>

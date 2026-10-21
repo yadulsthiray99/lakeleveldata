@@ -1,0 +1,82 @@
+# Keeps lakeleveldata.com current: every 3 hours, fetch the last 45 days for every lake from the
+# agencies (TWDB, USACE CWMS, USGS, Reclamation HDB, CDEC), rebuild + deploy only if a reading changed
+# (fingerprint compared with the live site's /live.json), then commit the stored readings.
+name: lake-update
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lake-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Check secrets are set (values are never printed)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=""
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID; do
+            if [ -z "${!name}" ]; then missing="$missing $name"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "::error title=Missing repository secrets::Not set:$missing. Add them under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Fetch new readings
+        run: python scripts/fetch_lakes.py
+
+      - name: Did anything change since the live site was built?
+        id: diff
+        run: |
+          new=$(python scripts/digest.py)
+          live=$(curl -s -m 30 https://lakeleveldata.com/live.json | python -c "import json,sys; print(json.load(sys.stdin).get('digest',''))" 2>/dev/null || true)
+          echo "data $new | live $live"
+          if [ "$new" = "$live" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - uses: actions/setup-node@v5
+        if: steps.diff.outputs.changed == 'true'
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Build with quality gate
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm ci
+          python scripts/digest.py --write
+          npm run build:gated
+
+      - name: Deploy to Cloudflare
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy
+
+      - name: Commit stored readings
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "lakeleveldata-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/lakes
+          git diff --cached --quiet && { echo "no new readings"; exit 0; }
+          git commit -m "Lake readings $(date -u +%Y-%m-%d\ %H:%M) UTC"
+          git pull --rebase --autostash -q || true
+          git push

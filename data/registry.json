@@ -1,0 +1,1303 @@
+[
+ {
+  "name": "Lake Mead",
+  "state": "NV",
+  "source": "hdb",
+  "id": [
+   "lchdb",
+   1930
+  ],
+  "q": "\\bmead\\b|hoover dam",
+  "full_pool": 1229,
+  "full_pool_src": "Bureau of Reclamation full pool",
+  "demand": 60500,
+  "state_name": "Nevada",
+  "slug": "lake-mead",
+  "state_slug": "nevada"
+ },
+ {
+  "name": "Lake Travis",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Travis",
+  "q": "travis",
+  "hist": "travis",
+  "demand": 49500,
+  "state_name": "Texas",
+  "slug": "lake-travis",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Canyon Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Canyon",
+  "q": "^(?!.*choke).*\\bcanyon lake\\b|\\blake canyon\\b",
+  "hist": "canyon",
+  "demand": 40500,
+  "state_name": "Texas",
+  "slug": "canyon-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Powell",
+  "state": "AZ",
+  "source": "usgs",
+  "id": "09379900",
+  "q": "\\bpowell\\b",
+  "full_pool": 3700,
+  "full_pool_src": "Bureau of Reclamation full pool",
+  "demand": 33100,
+  "state_name": "Arizona",
+  "slug": "lake-powell",
+  "state_slug": "arizona"
+ },
+ {
+  "name": "Medina Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Medina",
+  "q": "medina",
+  "hist": "medina",
+  "demand": 27100,
+  "state_name": "Texas",
+  "slug": "medina-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Corpus Christi",
+  "state": "TX",
+  "source": "twdb",
+  "id": "CorpusChristi",
+  "q": "corpus christi|mathis",
+  "hist": "corpus-christi",
+  "demand": 27100,
+  "state_name": "Texas",
+  "slug": "lake-corpus-christi",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Choke Canyon Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "ChokeCanyon",
+  "q": "choke canyon",
+  "hist": "choke-canyon",
+  "demand": 22200,
+  "state_name": "Texas",
+  "slug": "choke-canyon-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Lanier",
+  "state": "GA",
+  "source": "cwms",
+  "id": [
+   "SAM",
+   "Buford.Elev.Inst.1Hour.0.Raw-USGS"
+  ],
+  "q": "lanier",
+  "guide": [
+   "SAM",
+   "Buford.Elev-Guide Curve.Inst.15Minutes.0.Rev-PROJECT"
+  ],
+  "full_pool": 1071,
+  "full_pool_src": "U.S. Army Corps of Engineers full summer pool",
+  "demand": 14800,
+  "state_name": "Georgia",
+  "slug": "lake-lanier",
+  "state_slug": "georgia"
+ },
+ {
+  "name": "Kerr Lake",
+  "state": "VA",
+  "source": "usgs",
+  "id": "02079490",
+  "q": "\\bkerr\\b|buggs island",
+  "demand": 12100,
+  "state_name": "Virginia",
+  "slug": "kerr-lake",
+  "state_slug": "virginia"
+ },
+ {
+  "name": "Table Rock Lake",
+  "state": "MO",
+  "source": "cwms",
+  "id": [
+   "SWL",
+   "Table_Rock_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev"
+  ],
+  "q": "table rock",
+  "full_pool": 915,
+  "full_pool_src": "U.S. Army Corps of Engineers top of conservation pool",
+  "demand": 12100,
+  "state_name": "Missouri",
+  "slug": "table-rock-lake",
+  "state_slug": "missouri"
+ },
+ {
+  "name": "Shasta Lake",
+  "state": "CA",
+  "source": "cdec",
+  "id": "SHA",
+  "q": "shasta",
+  "demand": 12100,
+  "state_name": "California",
+  "slug": "shasta-lake",
+  "state_slug": "california"
+ },
+ {
+  "name": "Toledo Bend Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "ToledoBend",
+  "q": "toledo bend",
+  "hist": "toledo-bend",
+  "demand": 9900,
+  "state_name": "Texas",
+  "slug": "toledo-bend-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Hartwell",
+  "state": "SC",
+  "source": "cwms",
+  "id": [
+   "SAS",
+   "Hartwell.Elev-Head.Inst.1Hour.0.Raw-SHEF_SAS"
+  ],
+  "q": "hartwell",
+  "guide": [
+   "SAS",
+   "Hartwell.Elev-GC.Inst.1Day.0.ARCHIVE-DAILY"
+  ],
+  "demand": 9900,
+  "state_name": "South Carolina",
+  "slug": "lake-hartwell",
+  "state_slug": "south-carolina"
+ },
+ {
+  "name": "Sam Rayburn Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "SamRayburn",
+  "q": "rayburn",
+  "hist": "sam-rayburn",
+  "demand": 6600,
+  "state_name": "Texas",
+  "slug": "sam-rayburn-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Buchanan",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Buchanan",
+  "q": "buchanan",
+  "hist": "buchanan",
+  "demand": 6600,
+  "state_name": "Texas",
+  "slug": "lake-buchanan",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Elephant Butte Lake",
+  "state": "NM",
+  "source": "twdb",
+  "id": "ElephantButte",
+  "q": "elephant butte",
+  "hist": "elephant-butte",
+  "demand": 6600,
+  "state_name": "New Mexico",
+  "slug": "elephant-butte-lake",
+  "state_slug": "new-mexico"
+ },
+ {
+  "name": "Cheney Reservoir",
+  "state": "KS",
+  "source": "usgs",
+  "id": "07144790",
+  "q": "cheney",
+  "demand": 6600,
+  "state_name": "Kansas",
+  "slug": "cheney-reservoir",
+  "state_slug": "kansas"
+ },
+ {
+  "name": "Lake Oroville",
+  "state": "CA",
+  "source": "cdec",
+  "id": "ORO",
+  "q": "oroville",
+  "demand": 6600,
+  "state_name": "California",
+  "slug": "lake-oroville",
+  "state_slug": "california"
+ },
+ {
+  "name": "Amistad Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Amistad",
+  "q": "amistad",
+  "hist": "amistad",
+  "demand": 5400,
+  "state_name": "Texas",
+  "slug": "amistad-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Falcon Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Falcon",
+  "q": "falcon",
+  "hist": "falcon",
+  "demand": 5400,
+  "state_name": "Texas",
+  "slug": "falcon-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Cedar Creek Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "CedarCreek",
+  "q": "cedar creek",
+  "hist": "cedar-creek",
+  "demand": 5400,
+  "state_name": "Texas",
+  "slug": "cedar-creek-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Thurmond",
+  "state": "SC",
+  "source": "cwms",
+  "id": [
+   "SAS",
+   "Thurmond.Elev-Head.Inst.1Hour.0.Raw-SHEF_SAS"
+  ],
+  "q": "thurmond|clarks? hill",
+  "guide": [
+   "SAS",
+   "Thurmond.Elev-GC.Inst.1Day.0.ARCHIVE-DAILY"
+  ],
+  "demand": 5400,
+  "state_name": "South Carolina",
+  "slug": "lake-thurmond",
+  "state_slug": "south-carolina"
+ },
+ {
+  "name": "Bull Shoals Lake",
+  "state": "AR",
+  "source": "cwms",
+  "id": [
+   "SWL",
+   "Bull_Shoals_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev"
+  ],
+  "q": "bull shoals",
+  "full_pool": 654,
+  "full_pool_src": "U.S. Army Corps of Engineers top of conservation pool",
+  "demand": 5400,
+  "state_name": "Arkansas",
+  "slug": "bull-shoals-lake",
+  "state_slug": "arkansas"
+ },
+ {
+  "name": "Keystone Lake",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "KEYS.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "keystone",
+  "demand": 5400,
+  "state_name": "Oklahoma",
+  "slug": "keystone-lake",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Grand Lake o' the Cherokees",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "PENS.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "grand lake",
+  "demand": 5400,
+  "state_name": "Oklahoma",
+  "slug": "grand-lake-o-the-cherokees",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Rough River Lake",
+  "state": "KY",
+  "source": "cwms",
+  "id": [
+   "LRL",
+   "Rough-Lake.Elev.Inst.15Minutes.0.USGS-rev"
+  ],
+  "q": "rough river",
+  "demand": 5400,
+  "state_name": "Kentucky",
+  "slug": "rough-river-lake",
+  "state_slug": "kentucky"
+ },
+ {
+  "name": "Falls Lake",
+  "state": "NC",
+  "source": "usgs",
+  "id": "02087182",
+  "q": "falls lake|lake falls",
+  "full_pool": 251.5,
+  "full_pool_src": "U.S. Army Corps of Engineers normal pool",
+  "demand": 4400,
+  "state_name": "North Carolina",
+  "slug": "falls-lake",
+  "state_slug": "north-carolina"
+ },
+ {
+  "name": "Lake Eufaula",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "EUFA.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "eufaula(?! al)(?! alabama)",
+  "demand": 4400,
+  "state_name": "Oklahoma",
+  "slug": "lake-eufaula",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Nolin River Lake",
+  "state": "KY",
+  "source": "cwms",
+  "id": [
+   "LRL",
+   "Nolin-Lake.Elev.Inst.5Minutes.0.USGS-rev"
+  ],
+  "q": "nolin",
+  "demand": 4400,
+  "state_name": "Kentucky",
+  "slug": "nolin-river-lake",
+  "state_slug": "kentucky"
+ },
+ {
+  "name": "Jordan Lake",
+  "state": "NC",
+  "source": "usgs",
+  "id": "02098197",
+  "q": "jordan lake|lake jordan",
+  "full_pool": 216,
+  "full_pool_src": "U.S. Army Corps of Engineers normal pool",
+  "demand": 3600,
+  "state_name": "North Carolina",
+  "slug": "jordan-lake",
+  "state_slug": "north-carolina"
+ },
+ {
+  "name": "Lake Murray",
+  "state": "SC",
+  "source": "usgs",
+  "id": "02168500",
+  "q": "lake murray|murray lake",
+  "demand": 3600,
+  "state_name": "South Carolina",
+  "slug": "lake-murray",
+  "state_slug": "south-carolina"
+ },
+ {
+  "name": "Lake Allatoona",
+  "state": "GA",
+  "source": "cwms",
+  "id": [
+   "SAM",
+   "Allatoona.Elev.Inst.1Hour.0.Raw-USGS"
+  ],
+  "q": "allatoona",
+  "guide": [
+   "SAM",
+   "Allatoona.Elev-Guide Curve.Inst.1Day.0.Rev-PROJECT"
+  ],
+  "demand": 3600,
+  "state_name": "Georgia",
+  "slug": "lake-allatoona",
+  "state_slug": "georgia"
+ },
+ {
+  "name": "Beaver Lake",
+  "state": "AR",
+  "source": "cwms",
+  "id": [
+   "SWL",
+   "Beaver_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev"
+  ],
+  "q": "beaver lake",
+  "full_pool": 1120,
+  "full_pool_src": "U.S. Army Corps of Engineers top of conservation pool",
+  "demand": 3600,
+  "state_name": "Arkansas",
+  "slug": "beaver-lake",
+  "state_slug": "arkansas"
+ },
+ {
+  "name": "Oologah Lake",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "OOLO.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "oologah",
+  "demand": 3600,
+  "state_name": "Oklahoma",
+  "slug": "oologah-lake",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Kaw Lake",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "KAWL.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "\\bkaw\\b",
+  "demand": 3600,
+  "state_name": "Oklahoma",
+  "slug": "kaw-lake",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Barren River Lake",
+  "state": "KY",
+  "source": "cwms",
+  "id": [
+   "LRL",
+   "Barren-Lake.Elev.Inst.15Minutes.0.USGS-rev"
+  ],
+  "q": "barren river",
+  "demand": 3600,
+  "state_name": "Kentucky",
+  "slug": "barren-river-lake",
+  "state_slug": "kentucky"
+ },
+ {
+  "name": "Lake Champlain",
+  "state": "NY",
+  "source": "usgs",
+  "id": "04294413",
+  "q": "champlain",
+  "demand": 2900,
+  "state_name": "New York",
+  "slug": "lake-champlain",
+  "state_slug": "new-york"
+ },
+ {
+  "name": "Lake Tenkiller",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "TENK.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "tenkiller",
+  "demand": 2900,
+  "state_name": "Oklahoma",
+  "slug": "lake-tenkiller",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Fort Gibson Lake",
+  "state": "OK",
+  "source": "cwms",
+  "id": [
+   "SWT",
+   "FGIB.Elev.Inst.1Hour.0.Ccp-Rev"
+  ],
+  "q": "fort gibson|ft gibson",
+  "demand": 2900,
+  "state_name": "Oklahoma",
+  "slug": "fort-gibson-lake",
+  "state_slug": "oklahoma"
+ },
+ {
+  "name": "Folsom Lake",
+  "state": "CA",
+  "source": "cdec",
+  "id": "FOL",
+  "q": "folsom",
+  "demand": 2900,
+  "state_name": "California",
+  "slug": "folsom-lake",
+  "state_slug": "california"
+ },
+ {
+  "name": "Lake Texoma",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Texoma",
+  "q": "texoma",
+  "hist": "texoma",
+  "demand": 2400,
+  "state_name": "Texas",
+  "slug": "lake-texoma",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Cumberland",
+  "state": "KY",
+  "source": "cwms",
+  "id": [
+   "LRN",
+   "Wolf Creek Dam.Elev.Inst.1Hour.0.celrn-cwms-forecast"
+  ],
+  "q": "cumberland",
+  "demand": 2400,
+  "state_name": "Kentucky",
+  "slug": "lake-cumberland",
+  "state_slug": "kentucky"
+ },
+ {
+  "name": "Lake Berryessa",
+  "state": "CA",
+  "source": "cdec",
+  "id": "BER",
+  "q": "berryessa",
+  "demand": 2400,
+  "state_name": "California",
+  "slug": "lake-berryessa",
+  "state_slug": "california"
+ },
+ {
+  "name": "Lake Brownwood",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Brownwood",
+  "q": "brownwood",
+  "hist": "brownwood",
+  "demand": 1900,
+  "state_name": "Texas",
+  "slug": "lake-brownwood",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Texana",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Texana",
+  "q": "texana",
+  "hist": "texana",
+  "demand": 1900,
+  "state_name": "Texas",
+  "slug": "lake-texana",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Somerville Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Somerville",
+  "q": "somerville",
+  "hist": "somerville",
+  "demand": 1900,
+  "state_name": "Texas",
+  "slug": "somerville-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Fork Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Fork",
+  "q": "lake fork",
+  "hist": "fork",
+  "demand": 1900,
+  "state_name": "Texas",
+  "slug": "lake-fork-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Norfork Lake",
+  "state": "AR",
+  "source": "cwms",
+  "id": [
+   "SWL",
+   "Norfork_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev"
+  ],
+  "q": "norfork",
+  "full_pool": 552,
+  "full_pool_src": "U.S. Army Corps of Engineers top of conservation pool",
+  "demand": 1900,
+  "state_name": "Arkansas",
+  "slug": "norfork-lake",
+  "state_slug": "arkansas"
+ },
+ {
+  "name": "Grenada Lake",
+  "state": "MS",
+  "source": "cwms",
+  "id": [
+   "MVK",
+   "Grenada Lake.Elev.Inst.1Hour.0.DCP-rev"
+  ],
+  "q": "grenada",
+  "guide": [
+   "MVK",
+   "Grenada Lake.Elev.Inst.1Hour.0.Guide Curve"
+  ],
+  "demand": 1900,
+  "state_name": "Mississippi",
+  "slug": "grenada-lake",
+  "state_slug": "mississippi"
+ },
+ {
+  "name": "Smith Lake",
+  "state": "AL",
+  "source": "cwms",
+  "id": [
+   "SAM",
+   "Smith.Elev.Inst.1Hour.0.Raw-APCO"
+  ],
+  "q": "smith lake|lewis smith",
+  "guide": [
+   "SAM",
+   "Smith.Elev.Inst.1Hour.0.GC-APCO"
+  ],
+  "demand": 1900,
+  "state_name": "Alabama",
+  "slug": "smith-lake",
+  "state_slug": "alabama"
+ },
+ {
+  "name": "Belton Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Belton",
+  "q": "belton",
+  "hist": "belton",
+  "demand": 1600,
+  "state_name": "Texas",
+  "slug": "belton-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Georgetown",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Georgetown",
+  "q": "georgetown",
+  "hist": "georgetown",
+  "demand": 1600,
+  "state_name": "Texas",
+  "slug": "lake-georgetown",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Flaming Gorge Reservoir",
+  "state": "UT",
+  "source": "hdb",
+  "id": [
+   "uchdb2",
+   1927
+  ],
+  "q": "flaming gorge",
+  "demand": 1600,
+  "state_name": "Utah",
+  "slug": "flaming-gorge-reservoir",
+  "state_slug": "utah"
+ },
+ {
+  "name": "Greers Ferry Lake",
+  "state": "AR",
+  "source": "cwms",
+  "id": [
+   "SWL",
+   "GreersFerry_Dam-Headwater.Elev.Inst.1Hour.0.Decodes-rev"
+  ],
+  "q": "greers ferry",
+  "demand": 1600,
+  "state_name": "Arkansas",
+  "slug": "greers-ferry-lake",
+  "state_slug": "arkansas"
+ },
+ {
+  "name": "Sardis Lake",
+  "state": "MS",
+  "source": "cwms",
+  "id": [
+   "MVK",
+   "Sardis Lake.Elev.Inst.1Hour.0.DCP-rev"
+  ],
+  "q": "sardis",
+  "guide": [
+   "MVK",
+   "Sardis Lake.Elev.Inst.1Hour.0.Guide Curve"
+  ],
+  "demand": 1600,
+  "state_name": "Mississippi",
+  "slug": "sardis-lake",
+  "state_slug": "mississippi"
+ },
+ {
+  "name": "Lavon Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Lavon",
+  "q": "lavon",
+  "hist": "lavon",
+  "demand": 1300,
+  "state_name": "Texas",
+  "slug": "lavon-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Limestone",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Limestone",
+  "q": "limestone",
+  "hist": "limestone",
+  "demand": 1300,
+  "state_name": "Texas",
+  "slug": "lake-limestone",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Conroe",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Conroe",
+  "q": "conroe",
+  "hist": "conroe",
+  "demand": 1300,
+  "state_name": "Texas",
+  "slug": "lake-conroe",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Richland-Chambers Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "RichlandChambers",
+  "q": "richland",
+  "hist": "richland-chambers",
+  "demand": 1300,
+  "state_name": "Texas",
+  "slug": "richland-chambers-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Casitas",
+  "state": "CA",
+  "source": "cdec",
+  "id": "CSI",
+  "q": "casitas",
+  "demand": 1300,
+  "state_name": "California",
+  "slug": "lake-casitas",
+  "state_slug": "california"
+ },
+ {
+  "name": "Livingston Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Livingston",
+  "q": "livingston",
+  "hist": "livingston",
+  "demand": 1000,
+  "state_name": "Texas",
+  "slug": "livingston-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Marion",
+  "state": "SC",
+  "source": "usgs",
+  "id": "02171000",
+  "q": "lake marion",
+  "demand": 1000,
+  "state_name": "South Carolina",
+  "slug": "lake-marion",
+  "state_slug": "south-carolina"
+ },
+ {
+  "name": "Eagle Mountain Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "EagleMountain",
+  "q": "eagle mountain",
+  "hist": "eagle-mountain",
+  "demand": 880,
+  "state_name": "Texas",
+  "slug": "eagle-mountain-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lewisville Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Lewisville",
+  "q": "lewisville",
+  "hist": "lewisville",
+  "demand": 880,
+  "state_name": "Texas",
+  "slug": "lewisville-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Wright Patman Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "WrightPatman",
+  "q": "wright patman",
+  "hist": "wright-patman",
+  "demand": 880,
+  "state_name": "Texas",
+  "slug": "wright-patman-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "O. H. Ivie Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "OHIvie",
+  "q": "ivie",
+  "hist": "o-h-ivie",
+  "demand": 880,
+  "state_name": "Texas",
+  "slug": "o-h-ivie-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Havasu",
+  "state": "AZ",
+  "source": "hdb",
+  "id": [
+   "lchdb",
+   2101
+  ],
+  "q": "havasu",
+  "demand": 880,
+  "state_name": "Arizona",
+  "slug": "lake-havasu",
+  "state_slug": "arizona"
+ },
+ {
+  "name": "Taylorsville Lake",
+  "state": "KY",
+  "source": "cwms",
+  "id": [
+   "LRL",
+   "Taylorsville-Lake.Elev.Inst.5Minutes.0.USGS-rev"
+  ],
+  "q": "taylorsville",
+  "demand": 880,
+  "state_name": "Kentucky",
+  "slug": "taylorsville-lake",
+  "state_slug": "kentucky"
+ },
+ {
+  "name": "Bridgeport Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Bridgeport",
+  "q": "bridgeport",
+  "hist": "bridgeport",
+  "demand": 720,
+  "state_name": "Texas",
+  "slug": "bridgeport-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Stillhouse Hollow Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "StillhouseHollow",
+  "q": "stillhouse",
+  "hist": "stillhouse-hollow",
+  "demand": 720,
+  "state_name": "Texas",
+  "slug": "stillhouse-hollow-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Hubbard Creek Reservoir",
+  "state": "TX",
+  "source": "twdb",
+  "id": "HubbardCreek",
+  "q": "hubbard creek",
+  "hist": "hubbard-creek",
+  "demand": 720,
+  "state_name": "Texas",
+  "slug": "hubbard-creek-reservoir",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Tawakoni",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Tawakoni",
+  "q": "tawakoni",
+  "hist": "tawakoni",
+  "demand": 720,
+  "state_name": "Texas",
+  "slug": "lake-tawakoni",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Waco Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Waco",
+  "q": "lake waco|waco lake",
+  "hist": "waco",
+  "demand": 720,
+  "state_name": "Texas",
+  "slug": "waco-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Meredith",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Meredith",
+  "q": "meredith",
+  "hist": "meredith",
+  "demand": 720,
+  "state_name": "Texas",
+  "slug": "lake-meredith",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Navajo Reservoir",
+  "state": "NM",
+  "source": "hdb",
+  "id": [
+   "uchdb2",
+   1929
+  ],
+  "q": "navajo (lake|reservoir)",
+  "demand": 720,
+  "state_name": "New Mexico",
+  "slug": "navajo-reservoir",
+  "state_slug": "new-mexico"
+ },
+ {
+  "name": "Weiss Lake",
+  "state": "AL",
+  "source": "cwms",
+  "id": [
+   "SAM",
+   "Weiss.Elev.Inst.1Hour.0.Raw-APCO"
+  ],
+  "q": "weiss",
+  "guide": [
+   "SAM",
+   "Weiss.Elev.Inst.1Hour.0.GC-APCO"
+  ],
+  "demand": 720,
+  "state_name": "Alabama",
+  "slug": "weiss-lake",
+  "state_slug": "alabama"
+ },
+ {
+  "name": "Lake Palestine",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Palestine",
+  "q": "palestine",
+  "hist": "palestine",
+  "demand": 590,
+  "state_name": "Texas",
+  "slug": "lake-palestine",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Grapevine Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Grapevine",
+  "q": "grapevine",
+  "hist": "grapevine",
+  "demand": 590,
+  "state_name": "Texas",
+  "slug": "grapevine-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake L. B. Johnson",
+  "state": "TX",
+  "source": "twdb",
+  "id": "LyndonBJohnson",
+  "q": "\\blbj\\b|lyndon b",
+  "hist": "lyndon-b-johnson",
+  "demand": 590,
+  "state_name": "Texas",
+  "slug": "lake-l-b-johnson",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Possum Kingdom Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "PossumKingdom",
+  "q": "possum kingdom",
+  "hist": "possum-kingdom",
+  "demand": 590,
+  "state_name": "Texas",
+  "slug": "possum-kingdom-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Blue Mesa Reservoir",
+  "state": "CO",
+  "source": "hdb",
+  "id": [
+   "uchdb2",
+   1923
+  ],
+  "q": "blue mesa",
+  "demand": 590,
+  "state_name": "Colorado",
+  "slug": "blue-mesa-reservoir",
+  "state_slug": "colorado"
+ },
+ {
+  "name": "Lake Moultrie",
+  "state": "SC",
+  "source": "usgs",
+  "id": "02172000",
+  "q": "moultrie",
+  "demand": 590,
+  "state_name": "South Carolina",
+  "slug": "lake-moultrie",
+  "state_slug": "south-carolina"
+ },
+ {
+  "name": "Whitney Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Whitney",
+  "q": "whitney",
+  "hist": "whitney",
+  "demand": 480,
+  "state_name": "Texas",
+  "slug": "whitney-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake Ray Hubbard",
+  "state": "TX",
+  "source": "twdb",
+  "id": "RayHubbard",
+  "q": "ray hubbard",
+  "hist": "ray-hubbard",
+  "demand": 480,
+  "state_name": "Texas",
+  "slug": "lake-ray-hubbard",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Trinity Lake",
+  "state": "CA",
+  "source": "cdec",
+  "id": "CLE",
+  "q": "trinity lake",
+  "demand": 480,
+  "state_name": "California",
+  "slug": "trinity-lake",
+  "state_slug": "california"
+ },
+ {
+  "name": "Lake Granbury",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Granbury",
+  "q": "granbury",
+  "hist": "granbury",
+  "demand": 390,
+  "state_name": "Texas",
+  "slug": "lake-granbury",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Ray Roberts Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "RayRoberts",
+  "q": "ray roberts",
+  "hist": "ray-roberts",
+  "demand": 390,
+  "state_name": "Texas",
+  "slug": "ray-roberts-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Proctor Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Proctor",
+  "q": "proctor",
+  "hist": "proctor",
+  "demand": 390,
+  "state_name": "Texas",
+  "slug": "proctor-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Lake O the Pines",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Lake O' the Pines",
+  "q": "o the pines|of the pines",
+  "hist": "lake-o-the-pines",
+  "demand": 390,
+  "state_name": "Texas",
+  "slug": "lake-o-the-pines",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Dale Hollow Lake",
+  "state": "TN",
+  "source": "cwms",
+  "id": [
+   "LRN",
+   "Dale Hollow Dam.Elev.Inst.1Hour.0.celrn-cwms-forecast"
+  ],
+  "q": "dale hollow",
+  "demand": 390,
+  "state_name": "Tennessee",
+  "slug": "dale-hollow-lake",
+  "state_slug": "tennessee"
+ },
+ {
+  "name": "Pine Flat Lake",
+  "state": "CA",
+  "source": "cdec",
+  "id": "PNF",
+  "q": "pine flat",
+  "demand": 390,
+  "state_name": "California",
+  "slug": "pine-flat-lake",
+  "state_slug": "california"
+ },
+ {
+  "name": "Lake Mohave",
+  "state": "NV",
+  "source": "hdb",
+  "id": [
+   "lchdb",
+   2100
+  ],
+  "q": "mohave",
+  "demand": 320,
+  "state_name": "Nevada",
+  "slug": "lake-mohave",
+  "state_slug": "nevada"
+ },
+ {
+  "name": "Lake Russell",
+  "state": "SC",
+  "source": "cwms",
+  "id": [
+   "SAS",
+   "Russell.Elev-Head.Inst.1Hour.0.Raw-SHEF_SAS"
+  ],
+  "q": "russell lake|lake russell",
+  "guide": [
+   "SAS",
+   "Russell.Elev-GC.Inst.1Day.0.ARCHIVE-DAILY"
+  ],
+  "demand": 320,
+  "state_name": "South Carolina",
+  "slug": "lake-russell",
+  "state_slug": "south-carolina"
+ },
+ {
+  "name": "Millerton Lake",
+  "state": "CA",
+  "source": "cdec",
+  "id": "MIL",
+  "q": "millerton",
+  "demand": 320,
+  "state_name": "California",
+  "slug": "millerton-lake",
+  "state_slug": "california"
+ },
+ {
+  "name": "Center Hill Lake",
+  "state": "TN",
+  "source": "cwms",
+  "id": [
+   "LRN",
+   "Center Hill Dam.Elev.Inst.1Hour.0.celrn-cwms-forecast"
+  ],
+  "q": "center hill",
+  "demand": 170,
+  "state_name": "Tennessee",
+  "slug": "center-hill-lake",
+  "state_slug": "tennessee"
+ },
+ {
+  "name": "San Luis Reservoir",
+  "state": "CA",
+  "source": "cdec",
+  "id": "SNL",
+  "q": "san luis reservoir",
+  "demand": 170,
+  "state_name": "California",
+  "slug": "san-luis-reservoir",
+  "state_slug": "california"
+ },
+ {
+  "name": "Granger Lake",
+  "state": "TX",
+  "source": "twdb",
+  "id": "Granger",
+  "q": "granger",
+  "hist": "granger",
+  "demand": 140,
+  "state_name": "Texas",
+  "slug": "granger-lake",
+  "state_slug": "texas"
+ },
+ {
+  "name": "Walter F. George Lake",
+  "state": "GA",
+  "source": "usgs",
+  "id": "02343240",
+  "q": "walter f|lake eufaula al|eufaula alabama|eufaula al\\b",
+  "demand": 110,
+  "state_name": "Georgia",
+  "slug": "walter-f-george-lake",
+  "state_slug": "georgia"
+ },
+ {
+  "name": "New Melones Lake",
+  "state": "CA",
+  "source": "cdec",
+  "id": "NML",
+  "q": "new melones",
+  "demand": 110,
+  "state_name": "California",
+  "slug": "new-melones-lake",
+  "state_slug": "california"
+ },
+ {
+  "name": "Lake Seminole",
+  "state": "FL",
+  "source": "usgs",
+  "id": "02357500",
+  "q": "seminole",
+  "demand": 90,
+  "state_name": "Florida",
+  "slug": "lake-seminole",
+  "state_slug": "florida"
+ }
+]
