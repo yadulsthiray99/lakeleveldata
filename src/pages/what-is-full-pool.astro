@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { LAKES } from '../lib/lakes';
+const withPool = (LAKES as any[]).filter((l) => l.full && l.now != null).map((l) => ({ l, d: l.now - l.full })).sort((a, b) => a.d - b.d);
+const below = withPool.filter((x) => x.d < -0.5).length, above = withPool.filter((x) => x.d > 0.5).length;
+const ex = ['lake-mead', 'lake-travis', 'lake-lanier', 'lake-powell'].map((s) => withPool.find((x) => x.l.slug === s)).filter(Boolean) as { l: any; d: number }[];
+const faq: [string, string][] = [
+  ['What does full pool mean for a lake?', 'Full pool is the water elevation a reservoir is designed and operated to hold for normal use, often called the top of the conservation pool or normal pool. A lake "at full pool" is at that level; "10 feet below full pool" means its surface is 10 feet lower.'],
+  ['Can a lake be above full pool?', 'Yes. After heavy rain, reservoirs store extra water in the flood-control pool above full pool and release it gradually. Levels above full pool usually mean the dam is holding back floodwater.'],
+  ['Is full pool the same every month?', 'Not always. Many Army Corps lakes follow a guide curve: a higher summer pool for recreation and a lower winter pool that leaves room for spring floods. "Full" then depends on the date.'],
+];
+const schema = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }];
+---
+<Base schema={schema} title="What Is Full Pool? Lake Level Terms Explained | LakeLevelData"
+      description="What full pool means for a lake or reservoir: normal pool, conservation pool, flood pool, guide curves and dead pool, with today's examples from Lake Mead, Lake Travis and Lake Lanier.">
+  <p class="crumbs"><a href="/">Home</a> › What is full pool</p>
+  <h1>What is full pool?</h1>
+  <p class="answer"><strong>Full pool</strong> is the water level a reservoir is designed to hold for normal use, measured as an elevation in feet above sea level. When a lake is "8 feet below full pool", its surface is 8 feet lower than that mark. Today {below} of the {withPool.length} lakes we track with a published full pool are more than half a foot below it, and {above} are above it.</p>
+
+  <h2>Today's examples</h2>
+  <table>
+    <tr><th>Lake</th><th class="num">Level today</th><th class="num">Full pool</th><th class="num">Difference</th></tr>
+    {ex.map(({ l, d }) => <tr><td><a href={`/${l.state_slug}/${l.slug}/`}>{l.name}</a></td><td class="num">{l.now.toLocaleString('en-US')} ft</td><td class="num">{l.full.toLocaleString('en-US')} ft</td><td class={`num ${d < 0 ? 'down' : 'up'}`}>{d > 0 ? '+' : ''}{d.toFixed(1)} ft</td></tr>)}
+  </table>
+
+  <h2>The pools of a reservoir, top to bottom</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td><strong>Top of dam</strong></td><td>The physical crest of the dam.</td></tr>
+    <tr><td><strong>Flood-control pool</strong></td><td>Space above full pool kept empty to catch floodwater, then released slowly downstream.</td></tr>
+    <tr><td><strong>Full pool / normal pool / top of conservation pool</strong></td><td>The target level for water supply, power and recreation. The figure most lake-level reports compare against.</td></tr>
+    <tr><td><strong>Conservation pool</strong></td><td>The water stored for use between full pool and the inactive pool.</td></tr>
+    <tr><td><strong>Minimum power pool</strong></td><td>On hydropower dams, the lowest level at which turbines can run.</td></tr>
+    <tr><td><strong>Dead pool</strong></td><td>The level below which water can no longer flow out by gravity through the dam's outlets.</td></tr>
+  </table>
+  <p>Agencies use slightly different names: the Texas Water Development Board reports "conservation pool" and percent full; the Army Corps uses "normal pool" and guide curves; the Bureau of Reclamation reports elevation against "full pool" at Lake Mead and Lake Powell.</p>
+
+  <h2>Guide curves: when "full" changes with the season</h2>
+  <p>Many Army Corps of Engineers lakes in the Southeast, such as Lake Lanier, Lake Allatoona and Lake Hartwell, are drawn down in autumn to a lower winter pool, making room for winter and spring storms, then refilled to the summer pool by late spring. Our lake pages show the guide curve as a target line where the Corps publishes one, so you can tell a planned winter drawdown from a drought.</p>
+
+  <h2>Elevation vs percent full</h2>
+  <p>Feet below full pool and percent full are not proportional. Reservoirs are wider at the top, so the top few feet hold far more water than the same depth near the bottom: a lake 20 feet down can still be well over half full. Where the operator publishes storage, our pages show percent full alongside the elevation. See <a href="/how-lake-levels-are-measured/">how lake levels are measured</a>.</p>
+
+  <h2>Questions</h2>
+  {faq.map(([q, a]) => <><h3>{q}</h3><p>{a}</p></>)}
+</Base>

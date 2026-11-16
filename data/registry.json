@@ -94,7 +94,7 @@
   "source": "cwms",
   "id": [
    "SAM",
-   "Buford.Elev.Inst.1Hour.0.Raw-USGS"
+   "Buford.Elev.Inst.15Minutes.0.Raw-USGS"
   ],
   "q": "lanier",
   "guide": [

@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { LAKES } from '../lib/lakes';
+const n = (s: string) => (LAKES as any[]).filter((l) => l.source === s).length;
+const faq: [string, string][] = [
+  ['How is a lake level measured?', 'By a water-level gauge at the dam or on the shore: usually a pressure sensor, float, radar or bubbler system that records the water surface elevation every 15 minutes to an hour and transmits it to the operating agency.'],
+  ['What does "feet above sea level" mean for a lake?', 'Lake levels are reported as the elevation of the water surface relative to a fixed vertical datum (historically NGVD 29, now often NAVD 88), not as the depth of the lake. A level of 1,071 feet means the surface is 1,071 feet above that reference.'],
+  ['How often are lake levels updated?', 'Most gauges record every 15 minutes to an hour. This site checks each agency\'s feed every few hours and shows the latest reading with its timestamp.'],
+];
+const schema = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }];
+---
+<Base schema={schema} title="How Lake Levels Are Measured: Gauges, Datums and Percent Full"
+      description="How lake and reservoir levels are measured: gauges and sensors, feet above sea level and vertical datums, storage and percent full, and which agencies publish the readings.">
+  <p class="crumbs"><a href="/">Home</a> › How lake levels are measured</p>
+  <h1>How lake levels are measured</h1>
+  <p class="answer">A <strong>gauge</strong> at the dam or on the shore records the height of the water surface, usually every 15 minutes to an hour, as an <strong>elevation above a fixed reference (sea-level datum)</strong>, not as the lake's depth. The agency that runs the lake publishes the readings, and a table for each reservoir converts elevation into stored volume and <strong>percent full</strong>.</p>
+
+  <h2>The instruments</h2>
+  <table>
+    <tr><th>Gauge type</th><th>How it works</th></tr>
+    <tr><td>Float in a stilling well</td><td>A float in a pipe connected to the lake rises and falls with the water; the oldest method, still common at dams.</td></tr>
+    <tr><td>Pressure transducer</td><td>A submerged sensor measures the weight of the water above it, which converts to depth and then elevation.</td></tr>
+    <tr><td>Bubbler</td><td>Gas is pushed through a tube to an underwater outlet; the pressure needed tracks the water level.</td></tr>
+    <tr><td>Radar or ultrasonic sensor</td><td>Mounted above the water, it times a signal bounced off the surface; nothing touches the water.</td></tr>
+  </table>
+  <p>Readings are transmitted by satellite, radio or cellular link to the agency, checked, and published. Provisional readings can be revised later, which is why historic charts occasionally change by a few hundredths of a foot.</p>
+
+  <h2>Elevation, not depth</h2>
+  <p>Lake levels are elevations of the water surface above a vertical datum: originally the National Geodetic Vertical Datum of 1929 (NGVD 29), now often the North American Vertical Datum of 1988 (NAVD 88). The two can differ by a few feet in some places, so compare readings only within the same agency's series. The depth of the lake at any point is the elevation minus the height of the lake bed there.</p>
+
+  <h2>From elevation to percent full</h2>
+  <p>Operators survey each reservoir's shape to build an elevation–storage table. Sediment fills reservoirs over time, so these tables are re-surveyed every decade or two; a new survey can change "percent full" without the water level changing at all. Because the top of a reservoir is much wider than the bottom, the top few feet hold far more water than the same depth lower down. See <a href="/what-is-full-pool/">what full pool means</a>.</p>
+
+  <h2>Who publishes the readings we use</h2>
+  <table>
+    <tr><th>Agency</th><th class="num">Lakes on this site</th></tr>
+    <tr><td>U.S. Army Corps of Engineers (CWMS)</td><td class="num">{n('cwms')}</td></tr>
+    <tr><td>Texas Water Development Board</td><td class="num">{n('twdb')}</td></tr>
+    <tr><td>U.S. Geological Survey</td><td class="num">{n('usgs')}</td></tr>
+    <tr><td>Bureau of Reclamation</td><td class="num">{n('hdb') + n('rise')}</td></tr>
+    <tr><td>California Department of Water Resources (CDEC)</td><td class="num">{n('cdec')}</td></tr>
+  </table>
+  <p>Details of each feed are on the <a href="/sources/">sources page</a>. Browse <a href="/lakes/">all lakes</a> for today's readings.</p>
+
+  <h2>Questions</h2>
+  {faq.map(([q, a]) => <><h3>{q}</h3><p>{a}</p></>)}
+</Base>

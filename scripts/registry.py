@@ -47,7 +47,7 @@ add("Blue Mesa Reservoir", "CO", "hdb", ("uchdb2", 1923), r"blue mesa")
 
 # --- USGS lake gauges (instantaneous values; 62614 = elevation above NGVD29, 62615 = NAVD88, 00062 = reservoir elevation)
 add("Lake Powell", "AZ", "usgs", "09379900", r"\bpowell\b", full_pool=3700, full_pool_src="Bureau of Reclamation full pool")
-add("Lake Lanier", "GA", "cwms", ("SAM", "Buford.Elev.Inst.1Hour.0.Raw-USGS"), r"lanier", guide=("SAM", "Buford.Elev-Guide Curve.Inst.15Minutes.0.Rev-PROJECT"), full_pool=1071, full_pool_src="U.S. Army Corps of Engineers full summer pool")
+add("Lake Lanier", "GA", "cwms", ("SAM", "Buford.Elev.Inst.15Minutes.0.Raw-USGS"), r"lanier", guide=("SAM", "Buford.Elev-Guide Curve.Inst.15Minutes.0.Rev-PROJECT"), full_pool=1071, full_pool_src="U.S. Army Corps of Engineers full summer pool")
 add("Kerr Lake", "VA", "usgs", "02079490", r"\bkerr\b|buggs island")
 add("Falls Lake", "NC", "usgs", "02087182", r"falls lake|lake falls", full_pool=251.5, full_pool_src="U.S. Army Corps of Engineers normal pool")
 add("Jordan Lake", "NC", "usgs", "02098197", r"jordan lake|lake jordan", full_pool=216, full_pool_src="U.S. Army Corps of Engineers normal pool")
