@@ -23,6 +23,14 @@ const schema = [
     isAccessibleForFree: true, creator: { '@type': 'Organization', name: l.agency },
     spatialCoverage: { '@type': 'Place', name: `${l.name}, ${l.state_name}` } },
 ];
+// status badge: from percent full where the agency publishes it, else from the gap to full pool / guide curve
+const gap = l.vs_full ?? l.vs_guide;
+const status = l.pf != null
+  ? (l.pf >= 100 ? ['Full', 'flood storage in use', 'hi'] : l.pf >= 90 ? ['Near full', `${ft(l.pf, 0)}% full`, 'ok'] : l.pf >= 70 ? ['Below full', `${ft(l.pf, 0)}% full`, 'mid'] : l.pf >= 40 ? ['Low', `${ft(l.pf, 0)}% full`, 'lo'] : ['Very low', `${ft(l.pf, 0)}% full`, 'lo'])
+  : gap != null ? (gap >= 0 ? ['At or above ' + (l.vs_full != null ? 'full pool' : 'target'), `${sgn(gap)}`, 'hi'] : gap > -3 ? ['Near ' + (l.vs_full != null ? 'full pool' : 'target'), `${sgn(gap)}`, 'ok'] : gap > -10 ? ['Below ' + (l.vs_full != null ? 'full pool' : 'target'), `${sgn(gap)}`, 'mid'] : ['Well below ' + (l.vs_full != null ? 'full pool' : 'target'), `${sgn(gap)}`, 'lo']) : null;
+// 30-day sparkline from the daily readings (oldest left)
+const pts = [...l.recent].reverse().map((r: any) => r.value);
+const spark = (() => { if (pts.length < 3) return ''; const lo = Math.min(...pts), hi = Math.max(...pts), rng = hi - lo || 1; return pts.map((v: number, i: number) => `${(i / (pts.length - 1) * 160).toFixed(1)},${(36 - (v - lo) / rng * 32).toFixed(1)}`).join(' '); })();
 const full = l.pf != null ? 'TWDB' : l.full != null ? 'full' : l.guide != null ? 'guide' : null;
 ---
 <Base title={title} description={description} schema={schema}>
@@ -31,6 +39,7 @@ const full = l.pf != null ? 'TWDB' : l.full != null ? 'full' : l.guide != null ?
   <p class="answer"><strong>{ft(l.now)} ft</strong> above sea level ({when(l)}). {fullSentence(l)} {trendSentence(l)}</p>
   {l.daily_only && <p class="muted">{l.agency} publishes one reading per day for {l.name}; today's value appears once the agency posts it, usually the next morning.</p>}
 
+  {status && <p class={`badge ${status[2]}`}><b>{status[0]}</b> <span>{status[1]}</span></p>}
   <div class="stats">
     <div class="stat"><span>Level now</span><b>{ft(l.now)} ft</b></div>
     {l.pf != null && <div class="stat"><span>Percent full</span><b>{ft(l.pf, 1)}%</b></div>}
@@ -38,7 +47,7 @@ const full = l.pf != null ? 'TWDB' : l.full != null ? 'full' : l.guide != null ?
     {l.vs_guide != null && <div class="stat"><span>vs guide curve ({ft(l.guide, 1)})</span><b class={cls(l.vs_guide)}>{sgn(l.vs_guide)}</b></div>}
     <div class="stat"><span>Past 24 hours</span><b class={cls(l.ch1)}>{sgn(l.ch1)}</b></div>
     <div class="stat"><span>Past 7 days</span><b class={cls(l.ch7)}>{sgn(l.ch7)}</b></div>
-    <div class="stat"><span>Past 30 days</span><b class={cls(l.ch30)}>{sgn(l.ch30)}</b></div>
+    <div class="stat"><span>Past 30 days</span><b class={cls(l.ch30)}>{sgn(l.ch30)}</b>{spark && <svg class="spark" viewBox="0 0 160 40" role="img" aria-label={`${l.name} level over the last 30 days`}><polyline points={spark} fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round" /></svg>}</div>
     <div class="stat"><span>vs 1 year ago</span><b class={cls(l.ch365)}>{sgn(l.ch365)}</b></div>
   </div>
 
@@ -98,4 +107,10 @@ const full = l.pf != null ? 'TWDB' : l.full != null ? 'full' : l.guide != null ?
     <ul class="grid">{near.map((n) => <li><a href={lakeUrl(n)}>{n.name}</a><br /><span class="muted">{ft(n.now, 1)} ft{n.pf != null ? ` · ${ft(n.pf, 0)}% full` : ''} · <span class={cls(n.ch7)}>{sgn(n.ch7, 1)}</span> 7d</span></li>)}</ul>
     <p><a href={`/${l.state_slug}/`}>All {l.state_name} lake levels</a></p>
   </>}
+  <style>
+    .badge { display:inline-flex; gap:10px; align-items:baseline; padding:6px 14px; border-radius:99px; font-size:16px; margin:4px 0 0; }
+    .badge b { text-transform:uppercase; letter-spacing:.04em; font-size:14px; }
+    .badge.hi { background:#dbeafe; color:#1e3a8a; } .badge.ok { background:#dcfce7; color:#14532d; } .badge.mid { background:#fef9c3; color:#713f12; } .badge.lo { background:#fee2e2; color:#7f1d1d; }
+    .spark { display:block; width:100%; max-width:160px; height:40px; margin-top:4px; }
+  </style>
 </Base>
