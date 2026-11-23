@@ -1,14 +1,18 @@
 {
-  // Static site only: Cloudflare serves dist/ as static assets (no Worker script runs).
+  // Static site served from dist/; a small Worker (scripts/contact-worker.js) only handles POST /api/contact.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "lakeleveldata",
   "compatibility_date": "2026-10-12",
+  "main": "scripts/contact-worker.js",
+  "send_email": [{ "name": "MAIL" }],
   // Custom domains: Cloudflare creates the DNS records and SSL certificates on deploy.
   "routes": [
     { "pattern": "lakeleveldata.com", "custom_domain": true },
     { "pattern": "www.lakeleveldata.com", "custom_domain": true }
   ],
   "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     "directory": "./dist",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
